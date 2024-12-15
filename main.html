@@ -1,16 +1,103 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
 
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #verification_heading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #verification_subtext {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .code-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .code {
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .code:focus {
+            border-color: #007BFF;
+        }
+    </style>
+</head>
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+
+    <div class="container">
+        <h1 id="verification_heading">OTP Verification</h1>
+        <p id="verification_subtext">Enter the 6-digit OTP sent to your email.</p>
+
+        <div class="code-container">
+            <input type="text" class="code" maxlength="1" id="otp1">
+            <input type="text" class="code" maxlength="1" id="otp2">
+            <input type="text" class="code" maxlength="1" id="otp3">
+            <input type="text" class="code" maxlength="1" id="otp4">
+            <input type="text" class="code" maxlength="1" id="otp5">
+            <input type="text" class="code" maxlength="1" id="otp6">
+        </div>
+    </div>
+
+    <script>
+        // Select all the OTP input fields
+        const otpInputs = document.querySelectorAll('.code');
+
+        // Automatically focus the next input after entering a digit
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', function() {
+                if (this.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+            });
+
+            // Focus the previous input on backspace
+            input.addEventListener('keydown', function(event) {
+                if (event.key === 'Backspace' && this.value === '') {
+                    if (index > 0) {
+                        otpInputs[index - 1].focus();
+                    }
+                }
+            });
+        });
+
+        // Focus the first input on page load
+        otpInputs[0].focus();
+    </script>
 
 </body>
-
 </html>
+
