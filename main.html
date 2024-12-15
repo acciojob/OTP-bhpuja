@@ -72,32 +72,7 @@
         </div>
     </div>
 
-    <script>
-        // Select all the OTP input fields
-        const otpInputs = document.querySelectorAll('.code');
-
-        // Automatically focus the next input after entering a digit
-        otpInputs.forEach((input, index) => {
-            input.addEventListener('input', function() {
-                if (this.value.length === 1 && index < otpInputs.length - 1) {
-                    otpInputs[index + 1].focus();
-                }
-            });
-
-            // Focus the previous input on backspace
-            input.addEventListener('keydown', function(event) {
-                if (event.key === 'Backspace' && this.value === '') {
-                    if (index > 0) {
-                        otpInputs[index - 1].focus();
-                    }
-                }
-            });
-        });
-
-        // Focus the first input on page load
-        otpInputs[0].focus();
-    </script>
-
 </body>
 </html>
+
 
