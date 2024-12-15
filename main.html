@@ -7,12 +7,12 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
         }
 
         .container {
@@ -21,6 +21,7 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
         }
 
         #verification_heading {
@@ -37,7 +38,7 @@
 
         .code-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             gap: 10px;
         }
 
@@ -54,6 +55,10 @@
         .code:focus {
             border-color: #007BFF;
         }
+
+        .code::placeholder {
+            color: transparent;
+        }
     </style>
 </head>
 <body>
@@ -63,16 +68,17 @@
         <p id="verification_subtext">Enter the 6-digit OTP sent to your email.</p>
 
         <div class="code-container">
-            <input type="text" class="code" maxlength="1" id="otp1">
-            <input type="text" class="code" maxlength="1" id="otp2">
-            <input type="text" class="code" maxlength="1" id="otp3">
-            <input type="text" class="code" maxlength="1" id="otp4">
-            <input type="text" class="code" maxlength="1" id="otp5">
-            <input type="text" class="code" maxlength="1" id="otp6">
+            <input type="text" class="code" maxlength="1" id="otp1" placeholder=" ">
+            <input type="text" class="code" maxlength="1" id="otp2" placeholder=" ">
+            <input type="text" class="code" maxlength="1" id="otp3" placeholder=" ">
+            <input type="text" class="code" maxlength="1" id="otp4" placeholder=" ">
+            <input type="text" class="code" maxlength="1" id="otp5" placeholder=" ">
+            <input type="text" class="code" maxlength="1" id="otp6" placeholder=" ">
         </div>
     </div>
 
 </body>
 </html>
+
 
 
