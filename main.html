@@ -5,80 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTP Verification</title>
     <style>
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
         }
 
-        .container {
-            text-align: center;
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-
-        #verification_heading {
+        h1#verification_heading {
             font-size: 24px;
-            font-weight: bold;
+            color: #333;
             margin-bottom: 10px;
         }
 
-        #verification_subtext {
+        p#verification_subtext {
             font-size: 16px;
-            color: #777;
+            color: #666;
             margin-bottom: 20px;
         }
 
+        /* Code container styling */
         .code-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             gap: 10px;
         }
 
-        .code {
-            width: 40px;
-            height: 40px;
-            font-size: 24px;
+        .code-container .code {
+            width: 50px;
+            height: 50px;
             text-align: center;
+            font-size: 24px;
             border: 2px solid #ccc;
             border-radius: 5px;
             outline: none;
+            background-color: #fff;
         }
 
-        .code:focus {
-            border-color: #007BFF;
-        }
-
-        .code::placeholder {
-            color: transparent;
+        .code-container .code:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
     </style>
 </head>
 <body>
+    <!-- Heading -->
+    <h1 id="verification_heading">OTP Verification</h1>
+    <p id="verification_subtext">Please enter the 6-digit OTP sent to your phone</p>
 
-    <div class="container">
-        <h1 id="verification_heading">OTP Verification</h1>
-        <p id="verification_subtext">Enter the 6-digit OTP sent to your email.</p>
-
-        <div class="code-container">
-            <input type="text" class="code" maxlength="1" id="otp1" placeholder=" ">
-            <input type="text" class="code" maxlength="1" id="otp2" placeholder=" ">
-            <input type="text" class="code" maxlength="1" id="otp3" placeholder=" ">
-            <input type="text" class="code" maxlength="1" id="otp4" placeholder=" ">
-            <input type="text" class="code" maxlength="1" id="otp5" placeholder=" ">
-            <input type="text" class="code" maxlength="1" id="otp6" placeholder=" ">
-        </div>
+    <!-- OTP Code Inputs -->
+    <div class="code-container">
+        <input type="text" class="code" maxlength="1">
+        <input type="text" class="code" maxlength="1">
+        <input type="text" class="code" maxlength="1">
+        <input type="text" class="code" maxlength="1">
+        <input type="text" class="code" maxlength="1">
+        <input type="text" class="code" maxlength="1">
     </div>
 
+    <script>
+        const codes = document.querySelectorAll('.code');
+        codes.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                if (input.value.length === 1 && index < codes.length - 1) {
+                    codes[index + 1].focus();
+                }
+            });
+
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Backspace' && input.value === '' && index > 0) {
+                    codes[index - 1].focus();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-
-
-
